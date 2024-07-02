@@ -34,7 +34,7 @@ class ProcessPdfExport implements ShouldQueue
 
         event(new ExportPdfStatusUpdated($this->user, [
             'message' => 'Complete!',
-            'link'    => Storage::put('exports/'.$this->user->id.'.pdf', Pdf::loadView('exports.pdf', ['user' => $this->user])->output()),
+            'link'    => Storage::disk('public')->url('users.pdf'),
         ]));
     }
 }
